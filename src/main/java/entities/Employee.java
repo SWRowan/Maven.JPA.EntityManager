@@ -1,22 +1,31 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Employee {
 
     @Id
+    @GeneratedValue
     private Integer id;
     private String firstName;
     private String lastName;
+
+
     @ManyToOne
-    private Integer departmentId;
+    private Department department;
     private String phoneNumber;
 
     public Employee() {
     }
+
+    public Employee(String firstName, String lastName, Department department, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.department = department;
+        this.phoneNumber = phoneNumber;
+    }
+
 
     public Integer getId() {
         return id;
@@ -42,14 +51,6 @@ public class Employee {
         this.lastName = lastName;
     }
 
-//    public Department getDepartment() {
-//        return department;
-//    }
-//
-//    public void setDepartment(Department department) {
-//        this.department = department;
-//    }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -58,11 +59,12 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
+
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }

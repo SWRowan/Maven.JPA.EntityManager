@@ -35,9 +35,11 @@ public class EmployeeService {
         return employee;
     }
 
-//    public List<Employee> findAll(){
-//        List employee = em.createQuery("SELECT e FROM employee e ").getResultList();
-//    }
+    public List<Employee> findAll(){
+        tx.begin();
+        List employeeList = em.createQuery("SELECT e FROM Employee e ").getResultList();
+        return employeeList;
+    }
 
     public void delete(Employee employee){
         tx.begin();

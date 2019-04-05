@@ -6,9 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 public class DepartmentService {
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("compeny");
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("company");
     EntityManager em = emf.createEntityManager();
     EntityTransaction tx = em.getTransaction();
 
@@ -35,5 +36,11 @@ public class DepartmentService {
         tx.begin();
         em.remove(department);
         tx.commit();
+    }
+
+    public List<Department> findAll(){
+        tx.begin();
+        List deptList = em.createQuery("SELECT d FROM Department d").getResultList();
+        return deptList;
     }
 }

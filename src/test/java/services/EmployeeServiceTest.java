@@ -1,5 +1,6 @@
 package services;
 
+import entities.Department;
 import entities.Employee;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,10 +17,11 @@ public class EmployeeServiceTest {
     }
     @Test
     public void create() {
+        Department department = new Department(1, "vet");
         Employee employee = new Employee();
         employee.setFirstName("Sean");
         employee.setLastName("Rowan");
-        employee.setDepartmentId(1);
+        employee.setDepartment(department);
 
         employeeService.create(employee);
     }

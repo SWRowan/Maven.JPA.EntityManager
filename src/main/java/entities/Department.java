@@ -1,8 +1,6 @@
 package entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -11,10 +9,17 @@ public class Department {
     @Id
     private Integer deptId;
     private String name;
-    @OneToMany
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Employee> employeeList;
 
     public Department() {
+    }
+
+    public Department(Integer deptId, String name) {
+        this.deptId = deptId;
+        this.name = name;
+
     }
 
     public Integer getDeptId() {

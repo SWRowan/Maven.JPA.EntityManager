@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="jpaentity" target="7" />
+      <module name="jpaentity" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
